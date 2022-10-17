@@ -273,7 +273,7 @@ func (l *Router) matchRequest(req *events.APIGatewayProxyRequest) (
 	// remove trailing slash from request path
 	req.Path = strings.TrimSuffix(req.Path, "/")
 
-	fmt.Println(req.Path)
+	fmt.Println("Matching request", req.Path)
 
 	negErr := HTTPError{
 		Code:    http.StatusNotFound,
