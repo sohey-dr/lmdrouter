@@ -273,6 +273,8 @@ func (l *Router) matchRequest(req *events.APIGatewayProxyRequest) (
 	// remove trailing slash from request path
 	req.Path = strings.TrimSuffix(req.Path, "/")
 
+	fmt.Println(req.Path)
+
 	negErr := HTTPError{
 		Code:    http.StatusNotFound,
 		Message: "No such resource",
@@ -280,6 +282,8 @@ func (l *Router) matchRequest(req *events.APIGatewayProxyRequest) (
 
 	// find a route that matches the request
 	for _, r := range l.routes {
+		fmt.Println(r.re)
+
 		// does the path match?
 		matches := r.re.FindStringSubmatch(req.Path)
 		if matches == nil {
