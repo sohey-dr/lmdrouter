@@ -270,6 +270,7 @@ func (l *Router) matchRequest(req *events.APIGatewayProxyRequest) (
 	rsrc resource,
 	err error,
 ) {
+	fmt.Printf("Matching request %s %s", req.HTTPMethod, req.Path)
 	// remove trailing slash from request path
 	req.Path = strings.TrimSuffix(req.Path, "/")
 
